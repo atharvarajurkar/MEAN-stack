@@ -1,0 +1,49 @@
+:root {
+
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+html,
+body {
+	width: 100vw;
+	height: 100vh;
+	cursor: pointer;
+}
+
+.heading {
+display: flex;
+justify-content: space-between;
+background-color: #570373;
+color: white;
+cursor: pointer;
+width: 80%;
+border: solid 2px black;
+outline: none;
+font-size: 20px; 
+margin-top: 5px;
+border-radius: 10px 10px 0 0;
+}
+
+.content {
+	padding: 10px;
+	width: 80%;
+	display: none;
+	overflow: hidden;
+	background-color: #df85fd;
+	border: solid 1px black;
+}
+
+.collapsible {
+	/* height: 100%; */
+	font-size: 15px; 
+	border-radius: 0 10px 0 0;
+	padding: 0 5px;
+	/* align-items: center;
+	align-content: center;
+	text-align: center; */
+	background-color: #260132;
+}
