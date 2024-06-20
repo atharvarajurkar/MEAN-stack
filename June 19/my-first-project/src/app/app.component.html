@@ -1,0 +1,23 @@
+<h1 [ngStyle]="{ color: titleColor }">Hello, {{ title }}</h1>
+<div class="container">
+  <app-article-component
+    class="box"
+    *ngFor="let article of articleList; let i = index"
+    [ngStyle]="{ 'border-color': getBorderColor(i) }"
+    (mouseover)="hover = i"
+    (mouseout)="hover = -1"
+    [article]="article"
+    (titleColorEvent)="setTitleColor($event)"
+  >
+  </app-article-component>
+
+  <!-- <button mat-button>Click me</button>
+  <mat-spinner></mat-spinner>
+  <mat-progress-spinner
+    class="example-margin"
+    [color]="'accent'"
+    [mode]="'determinate'"
+    [value]="30"
+  >
+  </mat-progress-spinner> -->
+</div>

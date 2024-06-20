@@ -1,0 +1,14 @@
+<div class="articleContainer">
+  <h2>{{ article.title }}</h2>
+  <p>{{ article.data }}</p>
+  <div style="display: flex;">
+      <button
+        *ngIf="!loading"
+        mat-fab extended
+        [ngStyle]="{ 'background-color': article.themeColor, 'color': article.themeColor==='yellow'?'black':'white' }"
+        (click)="setTitleColor()">
+        set color {{ article.themeColor }}
+      </button>
+      <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
+  </div>
+</div>
