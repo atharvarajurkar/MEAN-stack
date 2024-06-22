@@ -1,0 +1,5 @@
+<app-average-rating [ratings]="ratings"></app-average-rating>
+<br>
+@for (rating of ratings; track $index) {
+    <app-rating [name]="rating.name" [content]="rating.content" [rate]="rating.rate"></app-rating>
+}
