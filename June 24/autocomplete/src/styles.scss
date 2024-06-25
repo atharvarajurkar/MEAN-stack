@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+  }
+  
+  $input-color: rgb(196, 195, 196);
+  $list-color: rgb(244, 243, 244);
+  $option-hover-color: rgb(196, 195, 196);
+  
+  ul.no-bullets {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .autocomplete > * {
+    width: 20vw;
+  }
+  
+  input {
+    min-height: 40px;
+    font-size: 20px;
+    background-color: $input-color;
+  }
+  
+  li {
+    min-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: $list-color;
+    transition: 500ms;
+    align-content: center;
+  }
+  
+  li:hover{
+    background-color: $option-hover-color;
+  }
+  

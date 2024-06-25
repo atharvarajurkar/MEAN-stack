@@ -1,0 +1,9 @@
+<h3>Autocomplete using Pipe</h3>
+<div class="autocomplete">
+  <input type="text" placeholder="Enter city" [(ngModel)]="city" (keyup)="resetTempCityList()">
+  <ul class="no-bullets" (click)="setCity($event)">
+    @for (c of tempcityList | filterCity: city ; track $index) {
+      <li>{{c}}</li>
+    }
+  </ul>
+</div>
