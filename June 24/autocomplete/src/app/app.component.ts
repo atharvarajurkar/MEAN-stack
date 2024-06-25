@@ -12,5 +12,5 @@ import { PipeComponent } from './pipe/pipe.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent{
-
+  cityList:string[] = ["San Diego","San Francisco","San Jose","Los Angeles"]
 }

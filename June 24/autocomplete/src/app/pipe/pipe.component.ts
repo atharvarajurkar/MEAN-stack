@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FilterCityPipe } from './filter-city.pipe';
 
@@ -11,7 +11,7 @@ import { FilterCityPipe } from './filter-city.pipe';
 })
 export class PipeComponent {
   city!:string;
-  cityList:string[] = ["San Diego","San Francisco","San Jose","Los Angeles"]
+  @Input() cityList!:string[];
   tempcityList:string[] = this.cityList
 
   setCity($event:any){
