@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   booklist!: Book[];
   filteredBookList!:Book[]
   hover!:number
-  booknameControl: FormControl = new FormControl('');
+  // booknameControl: FormControl = new FormControl('');
   
   constructor(private bookService: BookService){}
   ngOnInit(): void {
@@ -29,14 +29,19 @@ export class AppComponent implements OnInit {
   filterList(): void {
     this.filteredBookList = []
     this.filteredBookList = this.booklist.filter(book=>{
-      if (!this.booknameControl.value || !this.booknameControl.value.trim()){
+      if (!this.bookname || !this.bookname.trim()){
         return book
       }
-      else if (this.booknameControl.value && this.booknameControl.value.trim()){
-        return book.volumeInfo.title.toLowerCase().includes(this.booknameControl.value.trim().toLowerCase())
+      else if (this.bookname && this.bookname.trim()){
+        return book.volumeInfo.title.toLowerCase().includes(this.bookname.trim().toLowerCase())
       }
       return;
     })
+  }
+
+  resetList(){
+    this.bookname = ''
+    this.filteredBookList = this.booklist
   }
 
   getBoxShadow(index:number){
