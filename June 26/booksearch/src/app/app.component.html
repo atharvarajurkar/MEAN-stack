@@ -1,0 +1,31 @@
+<nav>
+  <ul class="no-bullets nav">
+    <li>Home</li>
+    <li>Wishlist</li>
+  </ul>
+</nav>
+<form >
+  <mat-form-field >
+    <mat-label>Search Book</mat-label>
+    <input matInput [formControl]="booknameControl" placeholder="Enter book name" (keyup)="filterList()">
+  </mat-form-field>
+</form>
+<ul class="no-bullets">
+  @for (book of filteredBookList; track $index) {
+    <mat-card class="example-card" appearance="outlined"
+    [ngStyle]="{ 'box-shadow': getBoxShadow($index) }"
+    (mouseover)="hoverstart($index)"
+    (mouseout)="hoverend()">
+      <mat-card-header>
+        <mat-card-title-group>
+          <img mat-card-md-image src={{book.volumeInfo.imageLinks.thumbnail}}  alt="Image of a Shiba Inu">
+          <mat-card-title>{{book.volumeInfo.title}}</mat-card-title>
+          <mat-card-subtitle>{{book.volumeInfo.publisher}}</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <span *ngFor="let i of [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]">book description </span>
+      </mat-card-content>
+    </mat-card>
+  }
+</ul>
