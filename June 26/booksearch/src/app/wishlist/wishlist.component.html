@@ -1,0 +1,11 @@
+@for (book of wishlist; track $index) {
+    <mat-card class="wishlist-card" appearance="outlined" [ngStyle]="{ 'box-shadow': getBoxShadow($index) }"
+        (mouseover)="hoverstart($index)" (mouseout)="hoverend()">
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>{{book.name}}</mat-card-title>
+                <div class="closeBtn" (click)="removeItem(book)"><b>X</b></div>
+            </mat-card-title-group>
+        </mat-card-header>
+    </mat-card>
+}

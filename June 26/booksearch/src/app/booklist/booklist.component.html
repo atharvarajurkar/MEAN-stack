@@ -1,0 +1,19 @@
+@for (book of booklist; track $index) {
+<mat-card class="example-card" appearance="outlined" [ngStyle]="{ 'box-shadow': getBoxShadow($index) }"
+    (mouseover)="hoverstart($index)" (mouseout)="hoverend()" (click)="addToWishlist(book)">
+    <mat-card-header>
+        <mat-card-title-group>
+            <img mat-card-md-image src={{book.picture}} alt="Image of Book">
+            <mat-card-title><b>{{book.name}}</b></mat-card-title>
+            <mat-card-subtitle>
+                Publisher: <b>{{book.publisher}}</b>
+                <br>
+                Publish Date: <b>{{book.publishedDate}}</b>
+            </mat-card-subtitle>
+        </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content class="cardContent">
+        {{book.desc}}
+    </mat-card-content>
+</mat-card>
+}

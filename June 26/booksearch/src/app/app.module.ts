@@ -12,10 +12,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SearchComponent } from './search/search.component';
+import { BooklistComponent } from './booklist/booklist.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent,
+    BooklistComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,

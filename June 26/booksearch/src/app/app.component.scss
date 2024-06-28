@@ -7,11 +7,6 @@ $input-color: rgb(196, 195, 196);
 $list-color: rgb(244, 243, 244);
 $box-shadow-color: rgb(97, 96, 97);
 
-ul.no-bullets {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
 
 .nav{
   display: flex;
@@ -22,22 +17,18 @@ ul.no-bullets {
   min-height: 40px;
 }
 
-input {
-  // min-height: 40px;
-  font-size: 20px;
+.pageLayout{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
 }
 
-// li {
-//   min-height: 40px;
-//   font-size: 20px;
-//   cursor: pointer;
-//   background-color: $list-color;
-//   transition: 500ms;
-//   align-content: center;
-// }
+.searchResults{
+  width: 60%;
+}
 
-.example-card {
-  max-width: 50vw;
-  margin-bottom: 8px;
-  box-shadow: 3px 3px $box-shadow-color;
+.wishlist{
+  margin-top: 100px;
+  width: 40%;
+  overflow-y: auto;
 }

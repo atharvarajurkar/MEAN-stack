@@ -1,0 +1,10 @@
+<mat-form-field class="example-form-field">
+    <mat-label>Search Book</mat-label>
+    <input matInput type="text" [formControl]="bookname" placeholder="Enter book name">
+    @if (bookname) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="resetList()">
+        <mat-icon>close</mat-icon>
+    </button>
+    }
+</mat-form-field>
+<!-- <p>{{bookname.value}}</p> -->

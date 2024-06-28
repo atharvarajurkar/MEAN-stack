@@ -1,31 +1,16 @@
-<nav>
+<!-- <nav>
   <ul class="no-bullets nav">
     <li>Home</li>
     <li>Wishlist</li>
   </ul>
-</nav>
-<mat-form-field class="example-form-field">
-  <mat-label>Search Book</mat-label>
-  <input matInput type="text" [(ngModel)]="bookname" placeholder="Enter book name" (keyup)="filterList()">
-  @if (bookname) {
-  <button matSuffix mat-icon-button aria-label="Clear" (click)="resetList()">
-    <mat-icon>close</mat-icon>
-  </button>
-  }
-</mat-form-field>
-
-@for (book of filteredBookList; track $index) {
-<mat-card class="example-card" appearance="outlined" [ngStyle]="{ 'box-shadow': getBoxShadow($index) }"
-  (mouseover)="hoverstart($index)" (mouseout)="hoverend()">
-  <mat-card-header>
-    <mat-card-title-group>
-      <img mat-card-md-image src={{book.volumeInfo.imageLinks.thumbnail}} alt="Image of Book">
-      <mat-card-title>{{book.volumeInfo.title}}</mat-card-title>
-      <mat-card-subtitle>{{book.volumeInfo.publisher}}</mat-card-subtitle>
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content>
-    <span *ngFor="let i of [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]">book description </span>
-  </mat-card-content>
-</mat-card>
-}
+</nav> -->
+<div class="pageLayout">
+  
+  <div class="searchResults">
+    <app-search></app-search>
+    <app-booklist></app-booklist>
+  </div>
+  <div class="wishlist">
+    <app-wishlist></app-wishlist>
+  </div>
+</div>
