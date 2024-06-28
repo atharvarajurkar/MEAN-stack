@@ -1,0 +1,21 @@
+.homeHeader {
+  position: absolute;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.signIn_btn {
+  height: 2.5rem;
+  width: 6rem;
+  border: none;
+  background-color: #e50914;
+  color: white;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 3px;
+}

@@ -1,0 +1,8 @@
+<main>
+    <app-header></app-header>
+    <app-landing></app-landing>
+    @for(d of datarows; track $index){
+    <hr />
+    <app-datarow [heading]="d.heading" [subheading]="d.subheading" [imagename]="d.imagename"></app-datarow>
+    }
+</main>

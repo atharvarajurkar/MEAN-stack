@@ -1,0 +1,17 @@
+<div class="datarowContainer">
+    <div class="contentfirst">
+        <h2>{{heading}}</h2>
+        <h5>{{subheading}}</h5>
+    </div>
+    <div class="contentsecond">
+        @if(imagename==='tv'){
+        <img src="/assets/home/tv.png" alt="" />
+        } @else if (imagename==='device'){
+        <img src="/assets/home/device-pile.png" alt="" />
+        } @else if (imagename==='mobile'){
+        <img src="/assets/home/mobile.jpeg" alt="" />
+        } @else if (imagename==='kids'){
+        <img src="/assets/home/kids.png" alt="" />
+        }
+    </div>
+</div>
