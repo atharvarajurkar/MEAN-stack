@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { Step3Component } from './step3/step3.component';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     children: [
       { path: 'step1', component: Step1Component },
       { path: 'step2', component: Step2Component },
+      { path: 'step3', component: Step3Component },
       { path: '', redirectTo: 'step1', pathMatch: 'full' },
     ],
   },
@@ -41,6 +43,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatCheckboxModule,
     MatInputModule,
+    MatIconModule,
     RouterModule.forChild(routes)
   ]
 })
