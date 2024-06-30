@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'register',
     loadChildren: ()=> import('./pages/register/register.module').then(m=>m.RegisterModule)
   },
+  {
+    path: 'movieList',
+    loadChildren: ()=> import('./pages/movieList/movie-list.module').then(m=>m.MovieListModule)
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

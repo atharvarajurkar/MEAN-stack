@@ -1,5 +1,6 @@
 .homeHeader {
   position: absolute;
+  // position: fixed;
   width: 100%;
   margin-top: 10px;
 }
@@ -9,6 +10,7 @@
   align-items: center;
   justify-content: space-around;
 }
+
 .signIn_btn {
   height: 2.5rem;
   width: 6rem;
