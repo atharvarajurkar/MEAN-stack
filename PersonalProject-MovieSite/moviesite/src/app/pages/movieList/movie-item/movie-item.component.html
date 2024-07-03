@@ -1,24 +1,29 @@
-<div class="main">
+<div #main class="main" [ngStyle]="{'background-image':getImagePath()}">
     <div class="blur">
         <div class="moviePosterContainer">
             <div class="posterContent">
                 <div class="boxShadow">
-                    <img class="posterImg boxShadow" src="/assets/movieList/stranger_things.png" alt="" />
+                    <!-- <img class="posterImg boxShadow" src="/assets/movieList/stranger_things.png" alt="" /> -->
+                    <img class="posterImg boxShadow" [src]="getImageURL()" alt="" />
                 </div>
             </div>
         </div>
         <div class="movieInfo">
             <div class="movieTitle">
-                <div>Stranger Things</div>
+                <!-- <div>Stranger Things</div> -->
+                <div [title]="movie.title">{{movie.title}}</div>
             </div>
             <div class="movieRating">
-                <div class="val">2022</div>
+                <!-- <div class="val">2022</div>
                 <div class="val">EN</div>
-                <div class="val">8.5</div>
+                <div class="val">8.5</div> -->
+                <div class="val">{{getReleaseDate()}}</div>
+                <div class="val">{{movie.original_language}}</div>
+                <div class="val">{{getAvgRating()}}</div>
             </div>
             <div class="moviePlotBrief">
-                <div>Puss in Boots discovers that his passion for adventure has taken its toll. He has burned thr...
-                </div>
+                <!-- <div>Puss in Boots discovers that his passion for adventure has taken its toll. He has burned thr...</div> -->
+                <div>{{getMovieOverview()}}</div>
             </div>
             <div class="moreDetailsContainer">
                 <button class="moreDetailsButton">

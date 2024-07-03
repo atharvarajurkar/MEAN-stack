@@ -17,6 +17,7 @@ import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { RegisterModule } from './pages/register/register.module';
 import { SharedModule } from './shared/shared/shared.module';
+import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SharedModule } from './shared/shared/shared.module';
     SharedModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent],
   exports:[HeaderComponent]

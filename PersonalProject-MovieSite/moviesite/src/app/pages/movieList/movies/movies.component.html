@@ -1,10 +1,10 @@
 <main>
     <div class="movieListContainer">
-        @for (item of generate(20); track $index) {
+        @for (movie of movieList; track $index) {
             <!-- <div class="movieItem">
                 <app-movie-item></app-movie-item>
             </div> -->
-            <app-movie-item class="movieItem"></app-movie-item>
+            <app-movie-item class="movieItem" [movie]="movie"></app-movie-item>
         }
     </div>
 </main>
