@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Movie } from '../../../shared/interfaces/movie';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-item',
@@ -13,7 +14,7 @@ export class MovieItemComponent implements OnInit, AfterViewInit {
 
   @ViewChild('main') movieItem!: ElementRef
 
-  constructor(private renderer: Renderer2){}
+  constructor(private renderer: Renderer2, private router: Router, private activatedRoute: ActivatedRoute){}
 
   ngOnInit(): void {
 
@@ -48,5 +49,10 @@ export class MovieItemComponent implements OnInit, AfterViewInit {
 
   getImagePath() {
     return "url("+this.getImageURL()+")"
+  }
+
+  navigateToDetails(){
+    console.log("clickeddd");
+    this.router.navigate(['../movieDetail'], { relativeTo: this.activatedRoute });
   }
 }
