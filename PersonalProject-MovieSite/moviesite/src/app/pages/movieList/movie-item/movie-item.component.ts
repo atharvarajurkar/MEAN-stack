@@ -21,7 +21,7 @@ export class MovieItemComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log("set bg im for ", this.movie.title);
+    // console.log("set bg im for ", this.movie.title);
     this.renderer.setStyle(this.movieItem.nativeElement, "background-color", 'red');
   }
 
@@ -52,7 +52,7 @@ export class MovieItemComponent implements OnInit, AfterViewInit {
   }
 
   navigateToDetails(){
-    console.log("clickeddd");
+    // console.log("clickeddd");
     this.router.navigate(['../movieDetail'], { relativeTo: this.activatedRoute });
   }
 }

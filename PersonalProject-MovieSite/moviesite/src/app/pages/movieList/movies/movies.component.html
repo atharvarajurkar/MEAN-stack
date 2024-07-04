@@ -1,10 +1,15 @@
-<main>
+<!-- <main>
     <div class="movieListContainer">
         @for (movie of movieList; track $index) {
-            <!-- <div class="movieItem">
-                <app-movie-item></app-movie-item>
-            </div> -->
             <app-movie-item class="movieItem" [movie]="movie"></app-movie-item>
         }
     </div>
+</main> -->
+
+<!-- ---infinite scroll--------------------------------------- -->
+
+<main>
+    <cdk-virtual-scroll-viewport id="virtualViewPort" #virtualViewPort itemSize="50">
+        <app-movie-item *cdkVirtualFor="let movie of movieList" class="movieItem" [movie]="movie"></app-movie-item>
+    </cdk-virtual-scroll-viewport>
 </main>

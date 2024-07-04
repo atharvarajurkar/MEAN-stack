@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared/shared.module';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieItemComponent } from './movie-item/movie-item.component';
 import { MoviedetailComponent } from './moviedetail/moviedetail.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ScrollingModule
   ]
 })
 export class MovieListModule { }

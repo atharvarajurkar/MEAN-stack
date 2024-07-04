@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, Subject, tap } from 'rxjs';
+import { map, Observable, Subject, take, tap } from 'rxjs';
 import { Movie, ResObj } from '../interfaces/movie';
 
 @Injectable({
@@ -26,7 +26,8 @@ export class MovieService {
         }),
         tap((movieList: Movie[]) => {
           this.movies$.next(movieList)
-        })
+        }),
+        take(1)
       )
   }
 
