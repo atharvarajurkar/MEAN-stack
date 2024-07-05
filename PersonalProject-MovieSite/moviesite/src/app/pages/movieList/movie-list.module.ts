@@ -7,6 +7,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieItemComponent } from './movie-item/movie-item.component';
 import { MoviedetailComponent } from './moviedetail/moviedetail.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    ScrollingModule
+    ScrollingModule,
+    MatIconModule
   ]
 })
 export class MovieListModule { }

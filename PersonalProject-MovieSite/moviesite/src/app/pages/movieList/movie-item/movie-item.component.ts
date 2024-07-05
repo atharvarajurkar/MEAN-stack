@@ -52,7 +52,7 @@ export class MovieItemComponent implements OnInit, AfterViewInit {
   }
 
   navigateToDetails(){
-    // console.log("clickeddd");
+    console.log("clickeddd");
     this.router.navigate(['../movieDetail'], { relativeTo: this.activatedRoute });
   }
 }
