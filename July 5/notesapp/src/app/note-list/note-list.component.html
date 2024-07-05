@@ -1,0 +1,11 @@
+<h1>Notes</h1>
+<ul>
+    @for (noteObj of noteList; track $index) {
+    <li>
+        <div class="listItem">
+            <div (click)="displayNote(noteObj)">{{noteObj.title}}</div>
+            <div (click)="deleteNote(noteObj)">[X]</div>
+        </div>
+    </li>
+    }
+</ul>

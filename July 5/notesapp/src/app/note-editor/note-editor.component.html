@@ -1,0 +1,15 @@
+<div>
+    <label for="title">Title</label>
+    <br>
+    <input type="text" id="title" name="title" [(ngModel)]="title">
+</div>
+<div>
+    <label for="notetext">Note</label>
+    <br>
+    <textarea id="notetext" name="notetext" rows="10" cols="50" [(ngModel)]="notetext">
+    </textarea>
+</div>
+<div>
+    <button (click)="resetNote()">Reset</button>
+    <button (click)="saveNote()">Save</button>
+</div>
