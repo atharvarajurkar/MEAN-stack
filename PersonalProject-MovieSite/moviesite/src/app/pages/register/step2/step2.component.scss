@@ -20,12 +20,21 @@ main {
   justify-content: space-evenly;
 }
 
+.formContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .loginUsername {
   width: 90%;
+  margin-top: 10px;
 }
 
 .loginPassword {
   width: 90%;
+  margin-top: 10px;
 }
 
 .submitBtn {

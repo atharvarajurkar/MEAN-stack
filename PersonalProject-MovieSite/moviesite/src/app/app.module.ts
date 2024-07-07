@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RegisterModule } from './pages/register/register.module';
 import { SharedModule } from './shared/shared/shared.module';
 import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,10 @@ import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@an
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCheckboxModule,
-    MatInputModule,
     MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatIconModule,
     RegisterModule,
     SharedModule
   ],

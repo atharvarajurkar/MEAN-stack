@@ -37,12 +37,12 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
-    MatFormFieldModule,
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCheckboxModule,
+    MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
     MatIconModule,
     RouterModule.forChild(routes)
   ]

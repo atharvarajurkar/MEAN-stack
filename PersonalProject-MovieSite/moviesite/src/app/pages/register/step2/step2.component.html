@@ -5,17 +5,29 @@
             <h3 class="para">Create a password to start your membership</h3>
             <p class="para subtext">Just a few more steps and you're done!</p>
             <p class="para subtext">We hate paperwork, too.</p>
-            <mat-form-field class="loginUsername" appearance="fill">
-                <mat-label>Enter your Email*</mat-label>
-                <input type="email" matInput formControlName="email" />
-            </mat-form-field>
-            <mat-form-field class="loginPassword" appearance="fill">
-                <mat-label>Enter your Password</mat-label>
-                <input type="password" matInput formControlName="password" />
-            </mat-form-field>
-            <button [routerLink]="['/register/step3']" class="submitBtn" type="submit">
-                Next
-            </button>
+
+            <form class="formContainer" [formGroup]="registerForm" (ngSubmit)="onNext()">
+                <mat-form-field class="loginUsername">
+                    <mat-label>Enter your Email</mat-label>
+                    <input type="email" matInput formControlName="email">
+                    @if (email?.invalid) {
+                    <mat-error>{{getEmailErrorMessage()}}</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field class="loginPassword">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+                    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    @if (password?.invalid) {
+                    <mat-error>{{getPasswordErrorMessage()}}</mat-error>
+                    }
+                </mat-form-field>
+                <button [disabled]="registerForm.invalid" class="submitBtn" type="submit">
+                    Next
+                </button>
+            </form>
         </div>
     </div>
 </main>
