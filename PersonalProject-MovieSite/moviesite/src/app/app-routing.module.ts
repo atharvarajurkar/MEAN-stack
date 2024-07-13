@@ -6,13 +6,14 @@ import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   {
     path: 'home',
+    component: HomeComponent,
     // loadComponent: () =>
     //   import('./pages/home/home.component').then((c) => c.HomeComponent),
-    component: HomeComponent,
   },
   {
     path: 'login',
     component: LoginComponent,
+    // loadComponent: ()=> import('./pages/login/login.component').then(c=>c.LoginComponent)
   },
   {
     path: 'register',

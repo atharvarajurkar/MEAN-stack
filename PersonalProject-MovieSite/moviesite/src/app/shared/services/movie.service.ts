@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, Subject, take, tap } from 'rxjs';
 import { Movie, ResObj } from '../interfaces/movie';
+import { MovieDetail } from '../interfaces/moviedetail';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Movie, ResObj } from '../interfaces/movie';
 export class MovieService {
 
   private moviesURL: string = "https://api.themoviedb.org/3/discover/movie?api_key="
+  private movieDetailURL: string = "https://api.themoviedb.org/3/movie/"
   private apiKey = "4abe0addafca93d950329e6651ca6c78"
   private id = "id="
 
@@ -31,15 +33,13 @@ export class MovieService {
       )
   }
 
-  getMovieById(id: number): Observable<Movie> {
-    return this.http.get<ResObj>(this.moviesURL + this.apiKey+'&'+this.id+id)
+  getMovieDetailById(id: number): Observable<MovieDetail> {
+    return this.http.get<MovieDetail>(this.movieDetailURL+id +'?api_key='+ this.apiKey)
       .pipe(
-        map((data: ResObj) => {
-          return data.results[0]
+        tap((movie: MovieDetail) => {
+          console.log(movie)
         }),
-        // tap((movie: Movie) => {
-        //   console.log(movie.poster_path)
-        // })
+        take(1)
       )
   }
 }

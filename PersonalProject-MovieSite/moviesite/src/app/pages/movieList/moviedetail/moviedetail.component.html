@@ -1,25 +1,17 @@
-<div class="main">
+<div class="main" [ngStyle]="{'background-image':getImagePath()}">
     <div class="blur">
         <div class="container">
             <div class="halfContainer">
                 <div class="title">
-                    Godzilla x Kong: The New Empire
+                    {{movieDetail.title}}
                 </div>
                 <div class="ratingBlock">
-                    <div>8.5</div>
-                    <div>Animation,Adventure,Comedy,Family,Fantasy</div>
-                    <div>2022</div>
+                    <div>{{getAvgRating()}}</div>
+                    <div>{{getGenres()}}</div>
+                    <div>{{getReleaseDate()}}</div>
                 </div>
                 <div class="description">
-                    <p>
-                        Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something
-                        entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been
-                        running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up.
-                        And it looks like she’s not alone.Teenager Riley's mind headquarters is undergoing a sudden
-                        demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger,
-                        Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure
-                        how to feel when Anxiety shows up. And it looks like she’s not alone.
-                    </p>
+                    <p>{{movieDetail.overview}}</p>
                 </div>
                 <div class="buttonBlock">
                     <button class="playNowButton"><mat-icon fontIcon="play_arrow"></mat-icon><b>PLAY NOW</b></button>
@@ -32,11 +24,10 @@
                         Poster
                     </div>
                     <div class="postersRow">
-                        <img src="https://image.tmdb.org/t/p/w500/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg" alt="" />
-                        <img src="https://image.tmdb.org/t/p/w500/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg" alt="" />
-                        <img src="https://image.tmdb.org/t/p/w500/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg" alt="" />
-                        <img src="https://image.tmdb.org/t/p/w500/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg" alt="" />
-                        <img src="https://image.tmdb.org/t/p/w500/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg" alt="" />
+                        <img [src]="getBackgroundImageURL()" alt="" />
+                        <img [src]="getBackgroundImageURL()" alt="" />
+                        <img [src]="getBackgroundImageURL()" alt="" />
+                        <img [src]="getBackgroundImageURL()" alt="" />
                     </div>
                 </div>
                 <div class="actorsContainer">
@@ -45,10 +36,10 @@
                     </div>
                     <div class="actorsRow">
                         @for (item of generate(20); track $index) {
-                            <div class="actorCard">
-                                <img src="https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg" alt="" />
-                                <p>Jason Statham</p>
-                            </div>
+                        <div class="actorCard">
+                            <img [src]="getPosterImageURL()" alt="" />
+                            <p>Jason Statham</p>
+                        </div>
                         }
                     </div>
                 </div>

@@ -29,8 +29,8 @@
 }
 
 .input_container{
-    // position: relative;
-    width: 100%;
+    position: static;
+    width: 80%;
     height: 100%;
     // display: flex;
 }
@@ -47,10 +47,10 @@
   }
   .start_button {
     position: absolute;
-    right: 220px;
+    right: 370px;
     border: none;
     width: 20%;
-    height: 6.5%;
+    height: 6.9%;
     outline: none;
 
     background-color: #e50914;

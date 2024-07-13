@@ -15,7 +15,7 @@ const routes: Routes = [
     component: MovieListComponent,
     children: [
       { path: 'movies', component: MoviesComponent },
-      { path: 'movieDetail', component: MoviedetailComponent },
+      { path: 'movieDetail/:id', component: MoviedetailComponent },
       { path: '', redirectTo: 'movies', pathMatch: 'full' },
     ],
   },
