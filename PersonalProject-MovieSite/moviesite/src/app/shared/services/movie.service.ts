@@ -13,6 +13,7 @@ export class MovieService {
   private movieDetailURL: string = "https://api.themoviedb.org/3/movie/"
   private apiKey = "4abe0addafca93d950329e6651ca6c78"
   private id = "id="
+  private movieTrailersURL = "https://api.themoviedb.org/3/movie/"
 
 
   private movies$: Subject<Movie[]> = new Subject()
@@ -41,5 +42,15 @@ export class MovieService {
         }),
         take(1)
       )
+  }
+
+  getMovieTrailersById(id: number): Observable<string[]>{
+    return this.http.get<string[]>(this.movieTrailersURL+id+"/videos?api_key="+this.apiKey)
+    .pipe(
+      map((data:any)=>{
+        return data.results.filter((x:any)=>x.site=="YouTube").map((x:any)=>x.key)
+      }),
+      take(1)
+    )
   }
 }

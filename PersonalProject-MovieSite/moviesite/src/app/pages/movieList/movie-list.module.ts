@@ -8,6 +8,10 @@ import { MovieItemComponent } from './movie-item/movie-item.component';
 import { MoviedetailComponent } from './moviedetail/moviedetail.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent } from '@angular/material/dialog';
+import { VideoplayerComponent } from './videoplayer/videoplayer.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 const routes: Routes = [
   {
@@ -22,13 +26,19 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MovieListComponent, MoviesComponent, MovieItemComponent, MoviedetailComponent],
+  declarations: [MovieListComponent, MoviesComponent, MovieItemComponent, MoviedetailComponent, VideoplayerComponent],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
     ScrollingModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+    YouTubePlayerModule
   ]
 })
 export class MovieListModule { }
