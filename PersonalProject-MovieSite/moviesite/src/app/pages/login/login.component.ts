@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,13 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   hidePassword: boolean = true
 
-  constructor(private fb: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute){}
+  constructor(private fb: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute,
+    private authService:AuthService
+  ){}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ["",[Validators.required, Validators.email]],
+      email: ["",[Validators.required, Validators.email],[this.authService.checkEmailValidator(true)]],
       password: ["",[Validators.required, Validators.minLength(6)]]
     })
   }
@@ -32,6 +35,8 @@ export class LoginComponent implements OnInit {
       return 'You must enter an email'
     } else if (this.email?.hasError('email')) {
       return 'Not a valid email'
+    } else if (this.email?.hasError('emailDoesNotExist')) {
+      return 'Email not registered'
     } else {
       return ''
     }

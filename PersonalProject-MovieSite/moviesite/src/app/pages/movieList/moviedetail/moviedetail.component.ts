@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { MovieService } from '../../../shared/services/movie.service';
+import { MovieService } from '../../../core/services/movieService/movie.service';
 import { MovieDetail } from '../../../shared/interfaces/moviedetail';
 import { MatDialog } from '@angular/material/dialog';
 import { VideoplayerComponent } from '../videoplayer/videoplayer.component';
+import { AuthService } from '../../../core/services/auth.service';
+import { MovieItemComponent } from '../movie-item/movie-item.component';
 
 @Component({
   selector: 'app-moviedetail',
@@ -14,12 +16,12 @@ export class MoviedetailComponent implements OnInit {
   private movieBackgroundURL = "https://image.tmdb.org/t/p/w500"
   private videoURL = "https://www.youtube.com/watch?v=h6hZkvrFIj0"
   movieDetail!: MovieDetail
-  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService, private matDialog: MatDialog){}
+  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService, private matDialog: MatDialog,
+    private authService: AuthService
+  ){}
   ngOnInit() {
-    console.log("ngOnInit moviedetail",this.activatedRoute.snapshot.params["id"]);
-    this.movieService.getMovieDetailById(this.activatedRoute.snapshot.params["id"]).subscribe((moviedetail:MovieDetail)=>{
-     this.movieDetail = moviedetail
-    })
+    this.authService.loading$.next(false)
+    this.movieDetail = this.activatedRoute.snapshot.data["movieDetail"]
   }
 
   openDialog(): void {
@@ -30,7 +32,6 @@ export class MoviedetailComponent implements OnInit {
         minHeight: 600
       });
     })
-    // const keyList = ["8R0jluRKzK0","yk2Ej59DnrE","oFu76_bPSR0"]
   }
 
   generate(num: number){

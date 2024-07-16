@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-step2',
@@ -12,11 +13,13 @@ export class Step2Component implements OnInit {
   registerForm!: FormGroup
   hidePassword:boolean = true
 
-  constructor(private fb: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute){}
+  constructor(private fb: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute,
+    private authService: AuthService
+  ){}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      email: ["",[Validators.required, Validators.email]],
+      email: ["",[Validators.required, Validators.email],[this.authService.checkEmailValidator(false)]],
       password: ["",[Validators.required, Validators.minLength(6)]]
     })
   }
@@ -33,6 +36,8 @@ export class Step2Component implements OnInit {
       return 'You must enter an email'
     } else if (this.email?.hasError('email')) {
       return 'Not a valid email'
+    } else if (this.email?.hasError('emailExists')) {
+      return 'This email is already registered'
     } else {
       return ''
     }

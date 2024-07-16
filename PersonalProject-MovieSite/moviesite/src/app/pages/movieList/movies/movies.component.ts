@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { MovieService } from '../../../shared/services/movie.service';
+import { MovieService } from '../../../core/services/movieService/movie.service';
 import { Movie } from '../../../shared/interfaces/movie';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { MyDataSource } from './movieListDataSource';
 
 @Component({
   selector: 'app-movies',
@@ -13,6 +14,7 @@ export class MoviesComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('virtualViewPort') infScrollContainer!: any
   movieList: Movie[] = []
   sbp: Subscription = new Subscription()
+  ds = new MyDataSource();
 
   constructor(private movieService: MovieService, private renderer:Renderer2) { }
 

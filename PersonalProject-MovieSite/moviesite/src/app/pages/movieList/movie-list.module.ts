@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent } from '@angular/material/dialog';
 import { VideoplayerComponent } from './videoplayer/videoplayer.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { MovieDetailResolveService } from './resolver/movieDetailResolveService';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const routes: Routes = [
   {
@@ -19,7 +21,7 @@ const routes: Routes = [
     component: MovieListComponent,
     children: [
       { path: 'movies', component: MoviesComponent },
-      { path: 'movieDetail/:id', component: MoviedetailComponent },
+      { path: 'movieDetail/:id', component: MoviedetailComponent, resolve:{movieDetail: MovieDetailResolveService} },
       { path: '', redirectTo: 'movies', pathMatch: 'full' },
     ],
   },
@@ -38,7 +40,9 @@ const routes: Routes = [
     MatDialogClose,
     MatDialogTitle,
     MatDialogContent,
-    YouTubePlayerModule
-  ]
+    YouTubePlayerModule,
+    MatProgressSpinnerModule
+  ],
+  providers: [MovieDetailResolveService]
 })
 export class MovieListModule { }

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Movie } from '../../../shared/interfaces/movie';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-movie-item',
@@ -10,11 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MovieItemComponent implements OnInit, AfterViewInit {
 
   private moviePosterURL = "https://image.tmdb.org/t/p/w500"
+  isClicked: boolean = false
   @Input() movie!: Movie
 
   @ViewChild('main') movieItem!: ElementRef
 
-  constructor(private renderer: Renderer2, private router: Router, private activatedRoute: ActivatedRoute){}
+  constructor(private renderer: Renderer2, private router: Router, private activatedRoute: ActivatedRoute,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
 
@@ -44,14 +48,21 @@ export class MovieItemComponent implements OnInit, AfterViewInit {
   }
 
   getImageURL() {
-    return this.moviePosterURL+this.movie.poster_path
+    return this.moviePosterURL + this.movie.poster_path
   }
 
   getImagePath() {
-    return "url("+this.getImageURL()+")"
+    return "url(" + this.getImageURL() + ")"
   }
 
-  navigateToDetails(){
+  isLoading(): boolean {
+    return this.isClicked && this.authService.loading$.value
+  }
+
+  navigateToDetails() {
+    this.isClicked = true
+    this.authService.loading$.next(true)
     this.router.navigate(['../movieDetail', this.movie.id], { relativeTo: this.activatedRoute });
+    setTimeout(() => { this.isClicked = false }, 1000)
   }
 }

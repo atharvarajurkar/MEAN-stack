@@ -1,5 +1,5 @@
 <div #main class="main" [ngStyle]="{'background-image':getImagePath()}" (click)="navigateToDetails()">
-    <div class="blur">
+    <div class="blur" *ngIf="!isLoading()">
         <div class="moviePosterContainer">
             <div class="posterContent">
                 <div>
@@ -34,5 +34,8 @@
                 </div> -->
             </div>
         </div>
+    </div>
+    <div *ngIf="isLoading()" class="loadingSpinnerContainer">
+        <mat-spinner [diameter]="200" [strokeWidth]="5"></mat-spinner>
     </div>
 </div>

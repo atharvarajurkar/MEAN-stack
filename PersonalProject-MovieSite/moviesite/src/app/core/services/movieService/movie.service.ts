@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, Subject, take, tap } from 'rxjs';
-import { Movie, ResObj } from '../interfaces/movie';
-import { MovieDetail } from '../interfaces/moviedetail';
+import { Movie, ResObj } from '../../../shared/interfaces/movie';
+import { MovieDetail } from '../../../shared/interfaces/moviedetail';
 
 @Injectable({
   providedIn: 'root'
