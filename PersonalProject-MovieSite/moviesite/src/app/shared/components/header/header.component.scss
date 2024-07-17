@@ -8,10 +8,50 @@
 .headerContent {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.signIn_btn {
+.netflix_icon{
+  margin-left: 30px;
+}
+
+.login_container{
+  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}
+
+$red1: rgb(240, 4, 4);
+$red2: rgb(149, 0, 0);
+$mid1: rgb(58, 1, 1);
+$mid2: rgb(15, 0, 46);
+$blue1: rgb(46, 1, 137);
+$blue2: rgb(66, 0, 199);
+
+@keyframes usrName {
+  0%   {background-image: linear-gradient(to right,$red2, $mid1, $mid2, $blue1, $blue2);}
+  25%   {background-image: linear-gradient(to right, $mid1, $mid2, $blue1, $blue2,$red2);}
+  50%   {background-image: linear-gradient(to right, $mid2, $blue1, $blue2,$red2, $mid1);}
+  75%   {background-image: linear-gradient(to right, $blue1, $blue2,$red2, $mid1, $mid2);}
+  100%   {background-image: linear-gradient(to right, $blue2,$red2, $mid1, $mid2, $blue1);}
+}
+
+.usernameContainer{
+  // background-image: linear-gradient(to right,red, rgb(28, 255, 2));
+  animation-name: usrName;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  color: transparent;
+  background-clip: text;
+
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.signIn_btn,.logOut_btn {
   height: 2.5rem;
   width: 6rem;
   border: none;

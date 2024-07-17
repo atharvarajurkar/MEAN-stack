@@ -1,11 +1,17 @@
 <header class="homeHeader">
     <div class="headerContent">
-        <div>
+        <!-- <div>
             
-        </div>
+        </div> -->
         <img class="netflix_icon" src="../assets/home/netflix_icon.png" [routerLink]="['/home']" />
         <div class="login_container">
-            <button class="signIn_btn" [routerLink]="['/login']">
+            <div class="usernameContainer" *ngIf="userLoggedIn">
+                welcome, {{username}}
+            </div>
+            <button class="logOut_btn" [routerLink]="['/home']" *ngIf="userLoggedIn" (click)="onLogOut()">
+                Log Out
+            </button>
+            <button class="signIn_btn" [routerLink]="['/login']" *ngIf="!userLoggedIn">
                 Sign In
             </button>
         </div>

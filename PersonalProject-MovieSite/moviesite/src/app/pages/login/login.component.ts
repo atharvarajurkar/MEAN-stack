@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { User } from '../../shared/interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -11,26 +12,28 @@ import { AuthService } from '../../core/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   hidePassword: boolean = true
+  loginErrorMsg!: string
 
-  constructor(private fb: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute,
-    private authService:AuthService
-  ){}
+  constructor(private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ["",[Validators.required, Validators.email],[this.authService.checkEmailValidator(true)]],
-      password: ["",[Validators.required, Validators.minLength(6)]]
+      email: ["", [Validators.required, Validators.email], [this.authService.checkEmailValidator(true)]],
+      password: ["", [Validators.required, Validators.minLength(6)]]
     })
   }
 
-  get email(){
+  get email() {
     return this.loginForm.get('email')
   }
-  get password(){
+  get password() {
     return this.loginForm.get('password')
   }
 
   getEmailErrorMessage() {
+    this.loginErrorMsg = ""
     if (this.email?.hasError('required')) {
       return 'You must enter an email'
     } else if (this.email?.hasError('email')) {
@@ -43,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   getPasswordErrorMessage() {
-    
+    this.loginErrorMsg = ""
     if (this.password?.hasError('required')) {
       return 'You must enter a password'
     } else if (this.password?.hasError('minlength')) {
@@ -53,19 +56,30 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSignIn(){
-    if (this.loginForm.valid){
-      this.router.navigate(['/movieList/movies']);
+  onSignIn() {
+    if (this.loginForm.valid) {
+      const loginDetails = { role: "USER", username: this.loginForm.value['email'].split("@")[0], ...this.loginForm.value }
+      this.authService.login(loginDetails).subscribe({
+        next: (next) => { },
+        error: (error) => {
+          this.loginErrorMsg = error.message
+        }
+      })
+      this.authService.currentUserObs$.subscribe((user: User | null) => {
+        if (user) {
+          this.router.navigate(['/movieList/movies']);
+        }
+      })
     }
   }
 
-  onSignUpClick(){
+  onSignUpClick() {
     this.router.navigate(['../register/step1']);
   }
 
-  onSubmit(){
-    if (this.loginForm.valid){
-      this.router.navigate(['/movieList/movies']);
-    }
-  }
+  // onSubmit(){
+  //   if (this.loginForm.valid){
+  //     this.router.navigate(['/movieList/movies']);
+  //   }
+  // }
 }

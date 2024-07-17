@@ -1,6 +1,6 @@
 <main>
-  <!-- <app-header></app-header>
-    <app-landing></app-landing> -->
+  <!-- <app-header [ngStyle]="{'display':'none'}" ></app-header> -->
+    <!-- <app-landing></app-landing> -->
   <div class="landingContainer">
     <div class="blurLayer">
       <div class="signinbox">
@@ -26,6 +26,7 @@
           <button class="submitBtn" type="submit">
             Sign In
           </button>
+          <div class="loginErrorMsg" *ngIf="loginErrorMsg">{{loginErrorMsg}}</div>
           <div>
             OR
           </div>
