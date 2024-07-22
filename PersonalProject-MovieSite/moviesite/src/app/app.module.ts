@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,8 @@ import { SharedModule } from './shared/shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { AppendHeaderAuthInterceptor } from './core/interceptors/append-header-auth';
+import { AuthService } from './core/services/auth.service';
+import { appInitializer } from './core/app.initializer';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,12 @@ import { AppendHeaderAuthInterceptor } from './core/interceptors/append-header-a
   providers: [
     provideAnimationsAsync(),
     provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializer,
+      multi: true,
+      deps: [AuthService],
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppendHeaderAuthInterceptor,
