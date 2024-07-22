@@ -16,34 +16,38 @@ export class MoviedetailComponent implements OnInit {
   private movieBackgroundURL = "https://image.tmdb.org/t/p/w500"
   private videoURL = "https://www.youtube.com/watch?v=h6hZkvrFIj0"
   movieDetail!: MovieDetail
+  moviePosters!: string[]
+  movieCast!: any[]
   constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService, private matDialog: MatDialog,
     private authService: AuthService
-  ){}
+  ) { }
   ngOnInit() {
     this.authService.loading$.next(false)
     this.movieDetail = this.activatedRoute.snapshot.data["movieDetail"]
+    this.moviePosters = this.activatedRoute.snapshot.data["moviePosters"]
+    this.movieCast = this.activatedRoute.snapshot.data["movieCast"]
   }
 
   openDialog(): void {
-    this.movieService.getMovieTrailersById(this.activatedRoute.snapshot.params["id"]).subscribe((keyList:string[])=>{
+    this.movieService.getMovieTrailersById(this.activatedRoute.snapshot.params["id"]).subscribe((keyList: string[]) => {
       this.matDialog.open(VideoplayerComponent, {
-        data: {trailers: keyList},
+        data: { trailers: keyList },
         minWidth: 1000,
         minHeight: 600
       });
     })
   }
 
-  generate(num: number){
-    return Array.from({length: num}).fill('a')
+  generate(num: number) {
+    return Array.from({ length: num }).fill('a')
   }
 
   getAvgRating() {
     return +this.movieDetail.vote_average.toFixed(2)
   }
 
-  getGenres(){
-    const genreList = this.movieDetail.genres.map((genre)=>{
+  getGenres() {
+    const genreList = this.movieDetail.genres.map((genre) => {
       return genre.name
     })
     return genreList.join(",")
@@ -57,15 +61,19 @@ export class MoviedetailComponent implements OnInit {
   }
 
   getBackgroundImageURL() {
-    return this.movieBackgroundURL+this.movieDetail.backdrop_path
+    return this.movieBackgroundURL + this.movieDetail.backdrop_path
   }
 
-  getPosterImageURL() {
-    return this.movieBackgroundURL+this.movieDetail.poster_path
-  }
+  // getPosterImageURL() {
+  //   return this.movieBackgroundURL + this.movieDetail.poster_path
+  // }
 
   getImagePath() {
-    return "url("+this.getBackgroundImageURL()+")"
+    return "url(" + this.getBackgroundImageURL() + ")"
+  }
+
+  getPosterURL(posterKey: string) {
+    return this.movieBackgroundURL + posterKey
   }
 
 }

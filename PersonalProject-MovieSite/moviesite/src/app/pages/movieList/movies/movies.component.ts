@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MovieService } from '../../../core/services/movieService/movie.service';
 import { Movie } from '../../../shared/interfaces/movie';
 import { Subscription } from 'rxjs';
@@ -12,11 +12,13 @@ import { MyDataSource } from './movieListDataSource';
 })
 export class MoviesComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('virtualViewPort') infScrollContainer!: any
+  @ViewChild('main') mainElement!: ElementRef
   movieList: Movie[] = []
   sbp: Subscription = new Subscription()
   ds = new MyDataSource();
 
   constructor(private movieService: MovieService, private renderer:Renderer2) { }
+
 
   ngOnInit(): void {
     this.sbp.add(this.movieService.getMovies().subscribe())
@@ -24,6 +26,12 @@ export class MoviesComponent implements OnInit, AfterViewInit, OnDestroy {
       this.movieList = movieList
     }))
   }
+
+
+  // onMovieCardClick(){
+  //   console.log("mainevelement",this.mainElement.nativeElement.scrollHeight);
+  //   console.log("infscrollelement",this.infScrollContainer.elementRef.nativeElement.scrollHeight);
+  // }
 
   ngAfterViewInit(): void {
     // console.log("after view init inf",this.infScrollContainer.elementRef.nativeElement);

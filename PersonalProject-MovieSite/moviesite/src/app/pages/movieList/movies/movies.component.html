@@ -8,8 +8,10 @@
 
 <!-- ---infinite scroll--------------------------------------- -->
 
-<main>
+<main #main>
     <cdk-virtual-scroll-viewport id="virtualViewPort" #virtualViewPort itemSize="50">
-        <app-movie-item *cdkVirtualFor="let movie of movieList" class="movieItem" [movie]="movie"></app-movie-item>
+        <app-movie-item *cdkVirtualFor="let movie of movieList" class="movieItem" 
+        [movie]="movie"
+        ></app-movie-item>
     </cdk-virtual-scroll-viewport>
 </main>

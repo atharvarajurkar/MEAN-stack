@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { Movie } from '../../../shared/interfaces/movie';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
@@ -13,6 +13,7 @@ export class MovieItemComponent implements OnInit, AfterViewInit {
   private moviePosterURL = "https://image.tmdb.org/t/p/w500"
   isClicked: boolean = false
   @Input() movie!: Movie
+  // @Output() clickEventEmitter: EventEmitter<void> = new EventEmitter<void>()
 
   @ViewChild('main') movieItem!: ElementRef
 
@@ -60,6 +61,7 @@ export class MovieItemComponent implements OnInit, AfterViewInit {
   }
 
   navigateToDetails() {
+    // this.clickEventEmitter.emit()
     this.isClicked = true
     this.authService.loading$.next(true)
     this.router.navigate(['../movieDetail', this.movie.id], { relativeTo: this.activatedRoute });

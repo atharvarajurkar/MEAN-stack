@@ -24,10 +24,9 @@
                         Poster
                     </div>
                     <div class="postersRow">
-                        <img [src]="getBackgroundImageURL()" alt="" />
-                        <img [src]="getBackgroundImageURL()" alt="" />
-                        <img [src]="getBackgroundImageURL()" alt="" />
-                        <img [src]="getBackgroundImageURL()" alt="" />
+                        @for (posterKey of moviePosters; track $index) {
+                        <img [src]="getPosterURL(posterKey)" alt="" />
+                        }
                     </div>
                 </div>
                 <div class="actorsContainer">
@@ -35,10 +34,10 @@
                         Actors
                     </div>
                     <div class="actorsRow">
-                        @for (item of generate(20); track $index) {
+                        @for (actor of movieCast; track $index) {
                         <div class="actorCard">
-                            <img [src]="getPosterImageURL()" alt="" />
-                            <p>Jason Statham</p>
+                            <img [src]="getPosterURL(actor.profile_path)" [alt]="actor.name" />
+                            <p>{{actor.name}}</p>
                         </div>
                         }
                     </div>

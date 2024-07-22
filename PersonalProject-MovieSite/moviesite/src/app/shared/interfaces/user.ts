@@ -1,8 +1,9 @@
 export interface User {
+    id: string,
     email: string,
-    password: string,
+    password?: string,
     username: string,
-    accessToken: string,
+    jwtToken: string,
     role: string
-    token: string
+    token?: string
 }

@@ -14,6 +14,9 @@ import { VideoplayerComponent } from './videoplayer/videoplayer.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { MovieDetailResolveService } from './resolver/movieDetailResolveService';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserRoleGuardService } from '../../core/routeGuards/userRoleGuard/user-role-guard.service';
+import { MoviePostersResolveService } from './resolver/moviePostersResolverService';
+import { MovieCastResolveService } from './resolver/movieCastResolverService';
 
 const routes: Routes = [
   {
@@ -21,7 +24,11 @@ const routes: Routes = [
     component: MovieListComponent,
     children: [
       { path: 'movies', component: MoviesComponent },
-      { path: 'movieDetail/:id', component: MoviedetailComponent, resolve:{movieDetail: MovieDetailResolveService} },
+      {
+        path: 'movieDetail/:id', component: MoviedetailComponent,
+        resolve: { movieDetail: MovieDetailResolveService, moviePosters: MoviePostersResolveService, movieCast: MovieCastResolveService },
+        canActivate: [UserRoleGuardService]
+      },
       { path: '', redirectTo: 'movies', pathMatch: 'full' },
     ],
   },
@@ -43,6 +50,6 @@ const routes: Routes = [
     YouTubePlayerModule,
     MatProgressSpinnerModule
   ],
-  providers: [MovieDetailResolveService]
+  providers: [MovieDetailResolveService, MoviePostersResolveService, MovieCastResolveService]
 })
 export class MovieListModule { }

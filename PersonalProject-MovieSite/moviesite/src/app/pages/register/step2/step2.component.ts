@@ -58,7 +58,7 @@ export class Step2Component implements OnInit {
   onNext() {
     console.log("onNext ", this.registerForm.value, this.registerForm.valid);
     if (this.registerForm.valid) {
-      const signUpDetails = { role: "USER", username: this.registerForm.value['email'].split("@")[0], ...this.registerForm.value }
+      const signUpDetails = {username: this.registerForm.value['email'].split("@")[0], ...this.registerForm.value }
       this.authService.signup(signUpDetails).subscribe({
         next: (next) => { },
         error: (error) => {

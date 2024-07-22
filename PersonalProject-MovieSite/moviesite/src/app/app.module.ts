@@ -17,8 +17,9 @@ import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { RegisterModule } from './pages/register/register.module';
 import { SharedModule } from './shared/shared/shared.module';
-import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { AppendHeaderAuthInterceptor } from './core/interceptors/append-header-auth';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,17 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppendHeaderAuthInterceptor,
+      multi: true,
+    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ErrorInterceptor,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
   exports:[HeaderComponent]
