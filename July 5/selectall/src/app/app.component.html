@@ -1,0 +1,28 @@
+<form #selectAllForm="ngForm">
+  <input type="checkbox" id="selectall" name="selectall" [(ngModel)]="selectAll" (change)="onSelectAllChange()">
+  <label for="selectall">Select All</label>
+    <ul>
+      @for (opt of optList; track $index) {
+        <li>
+          <input type="checkbox" [id]="opt" [name]="opt" [(ngModel)]="obj[opt]" (change)="onOptionChange(opt)">
+          <label [for]="opt">{{opt}}</label>
+        </li>
+      }
+    </ul>
+</form>
+
+
+<!-- <form [formGroup]="selectAllForm">
+  <input type="checkbox" id="selectall" name="selectall" formControlName="selectall">
+  <label for="selectall">Select All</label>
+  <div formGroupName="options">
+    <ul>
+      @for (opt of optList; track $index) {
+        <li>
+          <input type="checkbox" [id]="opt" [name]="opt" [formControlName]="opt">
+          <label [for]="opt">{{opt}}</label>
+        </li>
+      }
+    </ul>
+  </div>
+</form> -->
