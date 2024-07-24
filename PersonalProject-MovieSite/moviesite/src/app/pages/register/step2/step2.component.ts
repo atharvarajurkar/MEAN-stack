@@ -58,18 +58,24 @@ export class Step2Component implements OnInit {
   onNext() {
     console.log("onNext ", this.registerForm.value, this.registerForm.valid);
     if (this.registerForm.valid) {
-      const signUpDetails = {username: this.registerForm.value['email'].split("@")[0], ...this.registerForm.value }
-      this.authService.signup(signUpDetails).subscribe({
-        next: (next) => { },
-        error: (error) => {
-          console.log(error);
+      // const signUpDetails = { username: this.registerForm.value['email'].split("@")[0], ...this.registerForm.value }
+      // this.authService.signup(signUpDetails).subscribe({
+      //   next: (next) => { },
+      //   error: (error) => {
+      //     console.log(error);
+      //   }
+      // })
+      // this.authService.currentUserObs$.subscribe((user: User | null) => {
+      //   if (user) {
+      this.router.navigate(['../step3'], {
+        relativeTo: this.activatedRoute,
+        state: {
+          registerFormData: this.registerForm.value
         }
-      })
-      this.authService.currentUserObs$.subscribe((user: User | null) => {
-        if (user) {
-          this.router.navigate(['../step3'], { relativeTo: this.activatedRoute });
-        }
-      })
+      }
+      );
+      //   }
+      // })
     }
   }
 }
