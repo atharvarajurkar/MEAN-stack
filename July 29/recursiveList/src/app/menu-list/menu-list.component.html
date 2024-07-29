@@ -1,0 +1,17 @@
+<!-- <p>menu-list works!</p> -->
+
+@for(item of menulist; track $index){
+
+<div class="itemContainer">
+    @if(viewMap[item.name]){
+    <button (click)="toggleView(item.name)">-</button>
+    } @else {
+    <button (click)="toggleView(item.name)">+</button>
+    }
+    <p>{{item.name}}</p>
+</div>
+
+@if(viewMap[item.name] && item.child){
+<app-menu-list class="itemChildren" [menulist]="item.child"></app-menu-list>
+}
+}

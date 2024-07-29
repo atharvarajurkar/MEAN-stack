@@ -1,0 +1,18 @@
+.itemContainer {
+  display: flex;
+  margin: 10px;
+}
+
+.itemChildren {
+  position: relative;
+  left: 25px;
+}
+
+button{
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+p{
+  margin: 0px;
+}
