@@ -1,0 +1,17 @@
+<main>
+    <h2>Contact Us</h2>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <p><label for="name" id="name">Name:</label></p>
+        <p>
+            <input formControlName="name" type="text" name="name" id="name">
+            <span *ngIf="name?.dirty && name?.errors">Name required</span>
+        </p>
+        <p><label for="message" id="message">Message:</label></p>
+        <p>
+            <input class="message_input" formControlName="message" type="text" name="message" id="message">
+            <span *ngIf="message?.dirty && message?.errors">{{getMessageErrors()}}</span>
+        </p>
+        <button [disabled]="contactForm.invalid">Submit</button>
+    </form>
+</main>
+
